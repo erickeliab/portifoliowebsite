@@ -3,7 +3,7 @@ const router = express.Router();
 let mongoose = require('mongoose');
 
 //importing the model
-let Model = require('../../Model');
+let Skill = require('../../Models/Skill');
 
 
 
@@ -11,11 +11,11 @@ let Model = require('../../Model');
 router.get('/', (req,res) => {
     //Querying through model
 
-Model.find({}, (err,all) => {
+    Skill.find({}, (err,skills) => {
     if (err) {
         res.status(404,{msg: 'The services were not found'});
     }else {
-        var skills = all[0].Skills;
+        
         res.json(skills);
     }
 })

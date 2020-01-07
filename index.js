@@ -69,7 +69,7 @@ app.use('/', require('./Routes/indexroutes'));
 //API ROUTES
 app.use('/api/members', require('./Routes/apiroute')); 
 app.use('/api/services', require('./Routes/api/servicesController')); 
-app.use('/api/cv', require('./Routes/api/cv')); 
+app.use('/api/cv', require('./Routes/api/cvController')); 
 app.use('/api/skills', require('./Routes/api/skillsController')); 
 app.use('/api/projects', require('./Routes/api/projectsController')); 
 app.use('/api/messages', require('./Routes/api/messagesController')); 
