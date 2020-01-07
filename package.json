@@ -1,0 +1,23 @@
+{
+  "name": "testExpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.4",
+    "nodemon": "^1.19.3",
+    "passport-local": "^1.0.0",
+    "uuid": "^3.3.3"
+  }
+}
