@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 let mongoose = require('mongoose');
 
+
 //importing the model
 let Service = require('../../Models/Service');
-
+mongoose.set('useFindAndModify', false);
 
 
 //getting all the services
@@ -19,7 +20,7 @@ router.get('/', (req,res) => {
         res.json(services);
     }
 });
-
+});
 //get a single service
 router.get('/:s', (req,res) =>{
 
@@ -40,36 +41,59 @@ Service.findOne({s_name : req.params.s}, (err,service) => {
 });
 
 //creating the new service
-router.post('/', (req,res)=> {
 
-    //an instance of the new document
-    var newService = new Service({
-        s_name : "Mobile",
-        imgpath : "",
-        head : "Mobile Application Development",
-        bodytext : "Mobile apps that run in both android and ios platforms , they have native looks to higher the usr experience"
+router.post('/', (req,res) => {
+
+   
+
+    var savedata = new Service(req.body);
     
-    } );
+    savedata.save(function(err, result) {
+        if (err) throw err;
 
-//saving amodel to the database
-newService.save( function(err,serv) {
-    if(err)
-    {
-        console.error(error);
-    }
-    elseif(serv)
-    {
-       console.log(serv.s_name + 'saved');
-    }
+        if(result) {
+            res.json(result)
+        }
+    })
+ } );
+
+//updating the existing service
+
+router.put('/:s', (req,res) =>{
+
+    //finding thhe service according to the passed parameter
+    
+       
+    Service.findOne({s_name : req.params.s}, (err,service) => {
+        if (err) {
+            res.status(404,{msg: 'The services were not found'});
+        }else {
+           
+            var query = {'s_name' : service.s_name};
+            let newService = req.body;
+            Service.findOneAndUpdate(query, newService, {upsert: true}, function(err, doc) {
+                if (err) return res.send(500, {error: err});
+                return res.send('Successful updated');
+            });
+          
+        }
+    });
+    
 });
-
-
-
-} )
-
-    
   
-});
+router.delete('/:s', (req,res) =>{
+
+    //finding thhe service according to the passed parameter
+   
+    Service.deleteOne({s_name : req.params.s}, (err,doc) => {
+        if(err) throw err;
+        else {
+            res.send('successfull deleted');
+        }
+    } );
+    
+       
+    });
 
 
 module.exports = router;

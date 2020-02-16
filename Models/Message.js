@@ -3,7 +3,10 @@ var mongoose = require('mongoose');
 var MessageSchema = mongoose.Schema({
 
     
-       
+    id :{
+        type : String,
+        required : true,
+    },
         sendersname :{
             type : String,
             required : true,

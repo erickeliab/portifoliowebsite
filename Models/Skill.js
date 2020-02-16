@@ -15,6 +15,10 @@ let SkillSchema = new Schema({
     experience : {
         type : String,
         required : true
+    },
+    id : {
+        type : String,
+        required : true
     }
       
 

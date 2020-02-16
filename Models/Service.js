@@ -9,7 +9,7 @@ let ServiceSchema = mongoose.Schema({
         },
         imgpath : {
             type : String,
-            required : true
+            required : false
         },
         head : {
             type : String,

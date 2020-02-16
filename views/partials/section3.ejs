@@ -15,6 +15,7 @@
                     <br>
                           <table class="table table-hover table-dark">
                                 <thead>
+                                  
                                   <tr>
                                     
                                     <th scope="col"></th>
@@ -23,88 +24,20 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>JavaScript</td>
-                                    <td>Proficient</td>
-                                    <td>1 </td>
+                                  <% data.skills.forEach(skill => {
+                                    %>
+                                    <tr>
+                                    <td><%= skill.skillname %></td>
+                                    <td><%= skill.competence %></td>
+                                    <td><%= skill.experience %></td>
                                   </tr>
+                                  <%
+                                  });
 
-                                  <tr>
-                                        <td>PHP</td>
-                                        <td>Proficient</td>
-                                        <td>1 </td>
-                                      </tr>
-                                  <tr>
-                                        <tr>
-                                                <td>C#</td>
-                                                <td>Proficient</td>
-                                                <td>1 </td>
-                                              </tr>
-                                          <tr><tr>
-                                                <td>Java</td>
-                                                <td>Proficient</td>
-                                                <td>1 </td>
-                                              </tr>
-                                          <tr><tr>
-                                                <td>Kotlin</td>
-                                                <td>Proficient</td>
-                                                <td>1 </td>
-                                              </tr>
-                                          <tr><tr>
-                                                <td>NodeJS</td>
-                                                <td>Proficient</td>
-                                                <td>1 </td>
-                                              </tr>
-                                          <tr>
-                                             <tr>
-                                            <td>HTML</td>
-                                            <td>Proficient</td>
-                                            <td>1 </td>
-                                            </tr>
-                                                  <tr>
-                                                        <tr>
-                                                                <td>CSS</td>
-                                                                <td>Proficient</td>
-                                                                <td>1 </td>
-                                                              </tr>
-                                                          <tr>
-                                                                <tr>
-                                                                        <td>Laravel</td>
-                                                                        <td>Proficient</td>
-                                                                        <td>1 </td>
-                                                                      </tr>
-                                                                  <tr>
-                                                                        <tr>
-                                                                                <td>ASP.NET</td>
-                                                                                <td>Proficient</td>
-                                                                                <td>1 </td>
-                                                                              </tr>
-                                                                          <tr>
-                                                                          <tr>
-                                                                             <td>PHP</td>
-                                                                             <td>Proficient</td>
-                                                                              <td>1 </td>
-                                                                           </tr>
-                                                                          
-                                                                               <tr>
-                                                                                    <td>React</td>
-                                                                                   <td>Proficient</td>
-                                                                                    <td>1 </td>
-                                                                                     </tr>
-                                                                              <tr>
-                                                                              <tr>
-                                                                                  <td>Gimp</td>
-                                                                                <td>Proficient</td>
-                                                                                   <td>1 </td>
-                                                                            </tr>
-                                                                                    
-                                                                                               <tr>
-                                                                                               <td>Adobe Photoshop</td>
-                                                                                               <td>Proficient</td>
-                                                                                                <td>1 </td>
-                                                                                                </tr>
-            
+                                  %>
+                                  
 
+                                 
                                
                                   
                                 </tbody>

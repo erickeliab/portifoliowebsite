@@ -14,8 +14,10 @@
                         </a>		
                     </div>
                     <div class="footer_about_text" >
-                        <p class="text-dark">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
-                        <p class="text-dark">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
+                        <p class="text-dark">Currently parsuing a barchelor degree  of science in 
+                          Information Technology and Systems at Mzumbe University that is from 2017 to 2020
+                        </p>
+                        <p class="text-dark">Certifiied with Certificate of Advanced Secondary Education in 2017, Awarded Certificate of Ordinary Secondary Education in 2014, Certificate of Primary Education in 2010</p>
 
                       </div>
                     <br>              <p><a href="#" class="btn btn-success mt-20 rounded-0">More</a></p>
@@ -39,28 +41,22 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  <tr>
-                                                    <td>MyPortifolio</td>
-                                                    <td>Node,Expressjs,MongoDB</td>
-                                                    <td>40% </td>
+                                                  <% data.projects.forEach(project => {
+                                                    %>
+                                                    <tr>
+                                                    <td><%= project.projectname%></td>
+                                                    <td><% project.tools.forEach(tool => { %>
+                                                      <%= tool %>
+                                                      <%
+                                                    });
+                                                    
+                                                      %></td>
+                                                    <td><%= project.completed %>%</td>
                                                   </tr>
-                
-                                                  <tr>
-                                                        <td>NikiPhotoshoot</td>
-                                                        <td>PHP,Laravel</td>
-                                                        <td>98% </td>
-                                                      </tr>
+                                                  <%
+                                                  }); 
                                                   
-                                                      <tr>
-                                                            <td>UzaTz</td>
-                                                            <td>PHP,Laravel</td>
-                                                            <td>50% </td>
-                                                          </tr>
-                                                          <tr>
-                                                                <td>ComiXwahili</td>
-                                                                <td>React,Asp.NetMVC</td>
-                                                                <td>5% </td>
-                                                              </tr>
+                                                  %>
                                                   
                                                 </tbody>
                                               </table>
