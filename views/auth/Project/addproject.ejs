@@ -17,14 +17,89 @@
   
       <!-- Main content -->
       <section class="content">
-        <div class="container-fluid">
+        <div class="container col-md-9 col-lg-9 col-xl-9 card">
           <!-- Small boxes (Stat box) -->
           
+          <!-- FORM TO ADD A NEW SKILL -->
+
+          <div class="card-header">
+            <h3 class="card-title">Add new Project</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <div class="card-body">
+          <form role="form">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="Projecttitle">Project Name</label>
+                <input type="text" class="form-control" id="Projecttitle" placeholder="Enter Project">
+              </div>
+              <div class="form-group">
+                <label for="desc">Description</label>
+                <textarea name="body" id="desc" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="budget">Project Budget</label>
+                <input type="text" class="form-control" id="Projecttitle" placeholder="100,000">
+              </div>
+
+              <div class="form-group">
+                <label for="git">GitHub</label>
+                <input type="text" class="form-control" id="git" placeholder="www.github.com/..">
+              </div>
+             
+              <div class="form-group">
+                <label for="prod">Production</label>
+                <input type="text" class="form-control" id="prod" placeholder="www.mysite.com/..">
+              </div>
+
+              <div class="form-group">
+                <label for="">Completed</label>
+                <select class="custom-select " data-size="5"  data-style="btn-default btn-lg">
+                
+                  <% for( i=0; i < 100; i++){
+
+                   %> 
+                   <option> <%= i %> % </option>
+                  <% } %> 
+                
+                </select>
+              </div>
+              
+            
+              
+              <label for="hidden" class="text-dark" style="border:none;">Check the tool</label>
+
+              <div class="row container mt-1">
+              <% skills.forEach(skill => {
+
+                
+               %> 
+
+               <div class="form-check container col-md-4">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1"><%= skill.skillname %></label>
+              </div>
+              
+
+              <% }) %> 
+              
+            </div>
+            <!-- /.card-body -->
+          </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+
+
+          <!-- /END OF FORM -->
   
-          <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+        </div>
+
+  
+  
+        </div>
            
       </section>
       <!-- /.content -->

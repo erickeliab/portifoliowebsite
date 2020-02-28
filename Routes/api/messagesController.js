@@ -6,21 +6,6 @@ let mongoose = require('mongoose');
 let Message = require('../../Models/Message');
 mongoose.set('useFindAndModify', false);
 
-router.use((req, res, next) => {
-
-    Message.count({}, function(err,count){
-        
-       
-    res.append('Access-Control-Expose-Headers', 'Content-Range');
-     res.append('Content-Range', 'messages 0-3/'+ count);
-     res.append('Access-Control-Allow-Origin', []);
-     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-     res.append('Access-Control-Allow-Headers', 'Content-Type');
-    
-     
- });
-    next();
-});
 
 //GETTING ALL THE MESSAGES
 router.get('/', (req,res) => {
@@ -60,12 +45,13 @@ router.get('/add', (req,res) => {
 // GETTING A SPECIFIC MESSAGE
 router.get('/:id', (req,res) => {
 
-    Message.find({'id' : req.params.id}, (err,message) => {
+    Message.find({'id' : req.params.id}, (err,messages) => {
         if (err) {
-            throw err;
+            res.status(404);
         }else {
-            res.render('auth/Messages/singlemessage');
-
+            let message = messages[0];
+            res.render('auth/Messages/singlemessage',{message});
+            
         }
     });
 });

@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 
 //importing the model
 let Service = require('../../Models/Service');
+let Skill = require('../../Models/Skill');
 mongoose.set('useFindAndModify', false);
 
 
@@ -16,11 +17,27 @@ router.get('/', (req,res) => {
     if (err) {
         res.status(404,{msg: 'The services were not found'});
     }else {
-        
-        res.json(services);
+        console.log(services);
+        res.render('auth/Services/allservices',{services});
     }
 });
 });
+
+//get the page of adding the service
+
+router.get('/add', (req,res) => {
+    Skill.find( (err,skills) => {
+        if (err) {
+            console.log('some error occured during querrying the skills');
+        } 
+        else {
+            res.render('auth/Services/addservice', {skills});
+        }
+    });
+  
+});
+
+
 //get a single service
 router.get('/:s', (req,res) =>{
 

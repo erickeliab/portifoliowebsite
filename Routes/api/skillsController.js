@@ -48,8 +48,8 @@ router.get('/', (req,res) => {
        
         res.status(404,{msg: 'The services were not found'});
     }else {
-       
-        res.render('auth/Skills/allskills');
+       console.log(skills);
+        res.render('auth/Skills/allskills',{skills});
     }
    
 })

@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require ('path');
-const cors = require('cors');
 const expressLayout = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
@@ -8,21 +7,6 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.use(cors());
-//middleware
-app.use((req, res, next) => {
-  
-    //  res.append('Access-Control-Expose-Headers', 'Content-Range');
-    //  res.append('Content-Range', 'skills 0-3/20');
-    //  res.append('Access-Control-Allow-Origin', []);
-    //  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    //  res.append('Access-Control-Allow-Headers', 'Content-Type');
-    
- 
-
-
-    next();
-});
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/MyFullstack';

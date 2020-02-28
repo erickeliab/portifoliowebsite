@@ -2,7 +2,10 @@ let mongoose = require('mongoose');
 
 let ServiceSchema = mongoose.Schema({
 
-    
+    id : {
+        type : String,
+        required : true
+    },
         s_name : {
             type : String,
             required : true

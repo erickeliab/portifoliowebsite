@@ -4,21 +4,7 @@ let mongoose = require('mongoose');
 
 //importing the model
 let Project = require('../../Models/Project');
-router.use((req, res, next) => {
-
-    Project.count({}, function(err,count){
-        
-       
-    res.append('Access-Control-Expose-Headers', 'Content-Range');
-     res.append('Content-Range', 'projects 0-3/'+ count);
-     res.append('Access-Control-Allow-Origin', []);
-     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-     res.append('Access-Control-Allow-Headers', 'Content-Type');
-    
-     
- });
-    next();
-});
+let Skills = require('../../Models/Skill');
 
 
 //GETTING ALL THE PROJECTS
@@ -30,7 +16,7 @@ router.get('/', (req,res) => {
         res.status(404,{msg: 'The services were not found'});
     }else {
        
-        res.render('auth/Project/allproject');
+        res.render('auth/Project/allproject',{projects});
     }
 })
     
@@ -40,13 +26,13 @@ router.get('/', (req,res) => {
 router.get('/add', (req,res) => {
     //Querying through model
 
-    Project.find({}, (err,project) => {
+    Skills.find({}, (err,skills) => {
     if (err) {
        
         res.status(404,{msg: 'The message were not found'});
     }else {
        
-        res.render('auth/Project/addproject');
+        res.render('auth/Project/addproject',{skills});
     }
    
 })
@@ -60,9 +46,10 @@ router.post('/', (req,res) => {
     Project.count({}, function(err,count){
         county = count;
        req.body.id = county + 1;
-
+       
+       
     var newproject = new Project(req.body);
-console.log(req.body);
+
     newproject.save( (err,doc) => {
         if (err) throw err;
 
@@ -76,18 +63,22 @@ console.log(req.body);
 //GETTING A SINGLE PROJECT
 router.get('/:id', function(req,res){
 
-    Project.find({'id' : req.params.id}, (err,project) => 
+    Project.find({}, (err,projects) => 
     {
-        if (err) throw err;
-
-        if (project){
-            res.render('auth/Project/singleproject');
+        if (err) {
+             throw err;
+             
+        }
+        else if (projects){
+            let project = projects[req.params.id - 1];
+            console.log(project);
+            res.render('auth/Project/singleproject',{project});
         }
     });
 });
 
 
-//GETTING A SINGLE PROJECT
+//GETTING A SINGLE PROJECT FORM
 router.get('edit/:id', function(req,res){
 
     Project.find({'id' : req.params.id}, (err,project) => 

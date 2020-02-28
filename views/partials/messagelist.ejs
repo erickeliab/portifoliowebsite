@@ -26,7 +26,7 @@
           <div class="card-body p-0">
            
             <div class="table-responsive mailbox-messages">
-              <table class="table table-hover table-striped">
+              <table class="table table-hover table-dark table-striped">
                 <tbody>
                
                 <% messages.forEach(msg => {
@@ -40,11 +40,14 @@
                     </div>
                   </td>
                   <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                  <td class="mailbox-name"><a href="read-mail.html"><%= msg.sendersname %> <%= msg.lastname %></a></td>
+                  <td class="mailbox-name"><a href="/messages/<%= msg.id %>"><%= msg.sendersname %> <%= msg.lastname %></a></td>
+
                   <td class="mailbox-subject"><b><%= msg.email %></b> <%= msg.message %>
                   </td>
                   <td class="mailbox-attachment"></td>
                   <td class="mailbox-date">5 mins ago</td>
+                  <td class="mailbox-name"><a href="/messages/<%= msg.id %>" class="btn btn-default text-primary">read</a></td>
+
                 </tr>
 
 

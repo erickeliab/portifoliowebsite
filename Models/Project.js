@@ -14,7 +14,32 @@ var ProjectSchema = mongoose.Schema({
     completed : {
         type : Number,
         required : true
-    }
+    },
+    id : {
+        type : Number,
+        required : true
+    },
+    budget : {
+        type : String,
+        required : false
+    },
+    deadline : {
+        type : Date,
+        required : false
+    },
+    initialdate : {
+        type : Date,
+        required : false
+    },
+    description : {
+        type : String,
+        required : true
+    },
+    screenshorts : {
+        type : Array,
+        required : true
+    },
+    Links : [String],
       
 });
 
